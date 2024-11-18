@@ -16,7 +16,6 @@ public class KafkaTopicConfig {
     //genera topic al iniciar la app
     @Bean
     public NewTopic generateTopic(){
-
         //crea propiedades del topic.
         Map<String, String> configurations = new HashMap<>();
         configurations.put(TopicConfig.CLEANUP_POLICY_CONFIG,TopicConfig.CLEANUP_POLICY_DELETE);
@@ -26,7 +25,7 @@ public class KafkaTopicConfig {
 
         return TopicBuilder.name("order-created")
                 .partitions(2)
-                .replicas(2)
+                .replicas(1) //luego tirarlo a valor 2
                 .configs(configurations) //asigna las props creadas
                 .build();
 
